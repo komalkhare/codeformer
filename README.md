@@ -20,49 +20,44 @@ This project enhances faces in a video using the CodeFormer model for super-reso
    ```bash
    git clone https://github.com/sczhou/CodeFormer.git
 Install the required dependencies:
-bash
-Copy code
+# Video Face Enhancement with CodeFormer
+
+This guide explains how to set up and use the `x.py` script to enhance faces in a video using CodeFormer super-resolution.
+
+## Installation
+
+### Install the required dependencies:
+```bash
 pip install -r CodeFormer/requirements.txt
-Install OpenCV:
-bash
-Copy code
-pip install opencv-python
-Usage
+##Usage
 Place your input video (e.g., yongen.mp4) in the project directory.
+
 Update the script (x.py) to ensure the paths are correct for:
+
 The inference_codeformer.py script.
+
+
 The pre-trained models.
-Run the script:
-bash
-Copy code
 python x.py
-Script Description
-x.py processes the input video frame by frame:
-Detects faces using OpenCV's Haar Cascade.
-Enhances detected faces using CodeFormer super-resolution.
-Replaces the original face regions with the enhanced faces in the frame.
-Saves the enhanced video to the specified output path (e.g., output_yongen.mp4).
+##Script Description
+The script (x.py) processes the input video frame by frame:
+
+1.Detects faces using OpenCV's Haar Cascade.
+
+2.Enhances detected faces using CodeFormer super-resolution.
+
+3.Replaces the original face regions with the enhanced faces in the frame.
+
+4.Saves the enhanced video to the specified output path (e.g., output_yongen.mp4).
 Example
+Update the script with the input and output video file names:
+
 python
 Copy code
 input_video = 'yongen.mp4'      # Input video file
 output_video = 'output_yongen.mp4'  # Enhanced video output file
-Run the script to process the video:
 
-bash
+Run the script using the following command:
+
 Copy code
-python x.py
-Files
-x.py: Main script for video processing and face enhancement.
-temp_face.jpg: Temporary file to store detected face regions.
-enhanced_face.jpg: Temporary file for enhanced face regions.
-Notes
-Ensure the paths to CodeFormer scripts and pre-trained models are correctly set.
-The script currently processes faces sequentially. For performance optimization, consider batch processing.
-Troubleshooting
-Error: Could not open video file
-Verify the input video path.
-Error: Failed to read frame
-Ensure the video is not corrupted.
-Torch warnings
-Update PyTorch to the latest version compatible with your system and GPU.
+python x.py --superres CodeFormer -iv yongen.mp4 -ia input_audio.mp3 -o output_yongen.m
